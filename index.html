@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pre-Seed Investment Landscape: A Founder's Guide</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+            color: #1E293B; 
+            background-color: #F0F7FF; 
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+        .stat-card h3 {
+            font-size: 1.875rem; 
+            font-weight: 700; 
+        }
+        .stat-card p {
+            font-size: 0.875rem; 
+        }
+        .flowchart-step {
+            border: 2px solid #2979FF; 
+            padding: 1rem;
+            border-radius: 0.5rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            min-height: 100px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background-color: #FFFFFF; 
+        }
+        .flowchart-arrow {
+            font-size: 2rem;
+            text-align: center;
+            margin: 0.5rem 0;
+            color: #0A2540; 
+        }
+        .sticky-nav {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background-color: rgba(255, 255, 255, 0.95); 
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid #E2E8F0; 
+        }
+        .nav-link {
+            transition: color 0.3s ease;
+            font-weight: 500;
+        }
+        .nav-link:hover {
+            color: #E7007B !important; 
+            opacity: 1;
+        }
+        .section-title-underline {
+            display: inline-block;
+            position: relative;
+            color: #0A2540; 
+        }
+        .section-title-underline::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -8px; 
+            width: 60%;
+            height: 4px; 
+            background-image: linear-gradient(to right, #2979FF, #7928CA); 
+            border-radius: 2px;
+        }
+        .gemini-button {
+            background-image: linear-gradient(to right, #2979FF, #7928CA); 
+            color: #FFFFFF; 
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.375rem; 
+            font-weight: 600;
+            text-transform: uppercase; 
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        .gemini-button:hover {
+            opacity: 0.9;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            transform: translateY(-1px);
+        }
+        .loading-spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-left-color: #E7007B; 
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            animation: spin 1s linear infinite;
+            margin: 1rem auto;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        .ai-results {
+            background-color: #FFFFFF; 
+            border-left: 4px solid #2979FF; 
+            padding: 1.5rem; 
+            margin-top: 1.5rem; 
+            border-radius: 0.375rem; 
+            white-space: pre-line; 
+            box-shadow: 0 1px 3px 0 rgba(0,0,0,0.1), 0 1px 2px 0 rgba(0,0,0,0.06);
+            color: #1E293B; 
+        }
+        .investor-card-focus {
+            padding: 0.5rem;
+            border-radius: 0.375rem;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <nav id="navbar" class="sticky-nav">
+        <div class="container mx-auto px-6 py-4"> 
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <img src="https://47880027.fs1.hubspotusercontent-na1.net/hub/47880027/hubfs/Landing%20Page%20Images/companyon-logo-full-on-white@4x_vert-1.png?width=566&height=385&name=companyon-logo-full-on-white@4x_vert-1.png" 
+                         alt="Companyon Ventures Logo" 
+                         class="h-10 mr-3" 
+                         onerror="this.onerror=null; this.src='https://placehold.co/150x40/F0F7FF/0A2540?text=Companyon';">
+                    <a href="#" class="text-2xl font-bold" style="color: #0A2540;">Pre-Seed Insights</a> 
+                </div>
+                <div class="hidden md:flex items-center space-x-6"> 
+                    <a href="#investors" class="nav-link" style="color: #0A2540;">Investors</a>
+                    <a href="#philosophies" class="nav-link" style="color: #0A2540;">Philosophies</a>
+                    <a href="#numbers" class="nav-link" style="color: #0A2540;">Numbers</a>
+                    <a href="#value" class="nav-link" style="color: #0A2540;">Value-Add</a>
+                    <a href="#focus" class="nav-link" style="color: #0A2540;">Focus</a>
+                    <a href="#wisdom" class="nav-link" style="color: #0A2540;">Wisdom</a>
+                    <a href="#ai-questions" class="nav-link" style="color: #2979FF;">✨AI Questions</a> 
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-700 focus:outline-none">
+                        <svg class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="#0A2540"> 
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div id="mobile-menu" class="hidden md:hidden mt-3">
+                <a href="#investors" class="block py-2 px-4 text-sm hover:bg-gray-200 rounded" style="color: #0A2540;">Investors</a>
+                <a href="#philosophies" class="block py-2 px-4 text-sm hover:bg-gray-200 rounded" style="color: #0A2540;">Philosophies</a>
+                <a href="#numbers" class="block py-2 px-4 text-sm hover:bg-gray-200 rounded" style="color: #0A2540;">Numbers</a>
+                <a href="#value" class="block py-2 px-4 text-sm hover:bg-gray-200 rounded" style="color: #0A2540;">Value-Add</a>
+                <a href="#focus" class="block py-2 px-4 text-sm hover:bg-gray-200 rounded" style="color: #0A2540;">Focus</a>
+                <a href="#wisdom" class="block py-2 px-4 text-sm hover:bg-gray-200 rounded" style="color: #0A2540;">Wisdom</a>
+                <a href="#ai-questions" class="block py-2 px-4 text-sm hover:bg-gray-200 rounded" style="color: #2979FF;">✨AI Questions</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="py-20 md:py-28" style="background-color: #0A2540;"> 
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-4xl md:text-6xl font-bold leading-tight" style="color: #FFFFFF;">Navigating the Pre-Seed Frontier</h1> 
+            <p class="mt-6 text-lg md:text-xl max-w-3xl mx-auto" style="color: #F0F7FF;">A visual guide for founders, drawing insights from leading pre-seed investors. Understand their philosophies, what they look for, and how they add value beyond capital. Now with ✨ AI-powered tools!</p> 
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-16">
+
+        <section id="investors" class="py-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 section-title-underline">Meet the Investors</h2> 
+            <p class="text-center text-lg text-gray-700 mb-12 max-w-3xl mx-auto">Get acquainted with the panelists who are actively shaping the pre-seed landscape. Each brings a unique perspective and approach to finding and nurturing the next generation of startups.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                
+                <div class="bg-white rounded-lg shadow-lg p-8 transform hover:shadow-xl transition-shadow duration-300">
+                    <img src="https://placehold.co/100x100/2979FF/FFFFFF?text=BP" alt="Brett Perlmutter" class="w-28 h-28 rounded-full mx-auto mb-6 border-4 border-white shadow-md"> 
+                    <h3 class="text-2xl font-semibold text-center mb-1" style="color: #0A2540;">Brett Perlmutter</h3>
+                    <p class="text-center font-medium mb-3 text-lg" style="color: #2979FF;">Bulletpitch</p> 
+                    <p class="text-sm text-gray-600 text-center mb-4">Founder & CEO of a venture-media company, democratizing VC access. GP at Bulletpitch+ syndicate.</p>
+                    <div class="investor-card-focus text-xs text-center" style="background-color: #E0F5FE; color: #0A2540;"><strong>Focus:</strong> Industry Agnostic, Media-Driven Deals</div> 
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg p-8 transform hover:shadow-xl transition-shadow duration-300">
+                    <img src="https://placehold.co/100x100/E7007B/FFFFFF?text=KSB" alt="Kate Shillo Beardsley" class="w-28 h-28 rounded-full mx-auto mb-6 border-4 border-white shadow-md"> 
+                    <h3 class="text-2xl font-semibold text-center mb-1" style="color: #0A2540;">Kate Shillo Beardsley</h3>
+                    <p class="text-center font-medium mb-3 text-lg" style="color: #E7007B;">Hannah Grey</p> 
+                    <p class="text-sm text-gray-600 text-center mb-4">Founding Partner, focusing on customer-obsessed founders redefining everyday experiences. Thesis-led via "Culture Vibrations".</p>
+                    <div class="investor-card-focus text-xs text-center" style="background-color: #FCE4EC; color: #0A2540;"><strong>Focus:</strong> Consumer, SaaS, Health, FinTech</div> 
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg p-8 transform hover:shadow-xl transition-shadow duration-300">
+                    <img src="https://placehold.co/100x100/7928CA/FFFFFF?text=BW" alt="Brent Willess" class="w-28 h-28 rounded-full mx-auto mb-6 border-4 border-white shadow-md"> 
+                    <h3 class="text-2xl font-semibold text-center mb-1" style="color: #0A2540;">Brent Willess</h3>
+                    <p class="text-center font-medium mb-3 text-lg" style="color: #7928CA;">Founder Collective</p> 
+                    <p class="text-sm text-gray-600 text-center mb-4">Principal at a founder-first firm. Deliberately anti-thematic, backing "weird & wonderful" ideas. Ex-Uber Strategy.</p>
+                    <div class="investor-card-focus text-xs text-center" style="background-color: #F3E8FF; color: #0A2540;"><strong>Focus:</strong> Anti-Thematic, Efficient Entrepreneurship</div> 
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg p-8 transform hover:shadow-xl transition-shadow duration-300">
+                    <img src="https://placehold.co/100x100/0A2540/FFFFFF?text=NG" alt="Naomi Goez" class="w-28 h-28 rounded-full mx-auto mb-6 border-4 border-white shadow-md"> 
+                    <h3 class="text-2xl font-semibold text-center mb-1" style="color: #0A2540;">Naomi Goez</h3>
+                    <p class="text-center font-medium mb-3 text-lg" style="color: #0A2540;">Forum Ventures</p>
+                    <p class="text-sm text-gray-600 text-center mb-4">Principal making the "first check" into B2B SaaS. Firm includes accelerator & AI venture studio.</p>
+                    <div class="investor-card-focus text-xs text-center" style="background-color: #CFD8DC; color: #0A2540;"><strong>Focus:</strong> B2B SaaS, Applied AI, Healthcare</div> 
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-lg p-8 transform hover:shadow-xl transition-shadow duration-300 md:col-span-2 lg:col-span-1 lg:col-start-2">
+                    <img src="https://placehold.co/100x100/1E293B/FFFFFF?text=RF" alt="Riley Finch" class="w-28 h-28 rounded-full mx-auto mb-6 border-4 border-white shadow-md"> 
+                    <h3 class="text-2xl font-semibold text-center mb-1" style="color: #0A2540;">Riley Finch</h3>
+                    <p class="text-center font-medium mb-3 text-lg" style="color: #1E293B;">NextGen Venture Partners</p>
+                    <p class="text-sm text-gray-600 text-center mb-4">Investor leveraging an extensive "VP Engine" network for B2B startups. Focus on connection as a catalyst.</p>
+                    <div class="investor-card-focus text-xs text-center" style="background-color: #E2E8F0; color: #0A2540;"><strong>Focus:</strong> B2B (SaaS, Health, FinTech, Data, Robotics)</div> 
+                </div>
+            </div>
+        </section>
+
+        <section id="philosophies" class="py-16 bg-white rounded-xl shadow-xl my-16 p-10 md:p-14">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 section-title-underline">Investment Philosophies & Strategies</h2>
+            <p class="text-center text-lg text-gray-700 mb-12 max-w-3xl mx-auto">Each firm operates with a distinct approach to identifying and supporting pre-seed ventures. Understanding these philosophies helps founders align their pitch and expectations.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <div class="border-l-4 p-6 rounded-r-lg shadow-md hover:shadow-lg transition-shadow duration-300" style="border-color: #E7007B; background-color: #FFF6FA;"> 
+                    <h4 class="text-xl font-semibold mb-2" style="color: #E7007B;">Venture-Media (Bulletpitch)</h4>
+                    <p class="text-gray-700">Leverages media (newsletters, events) for deal flow, community building, and founder visibility. Believes the next unicorns will be found via media channels. Invests through the Bulletpitch+ syndicate.</p>
+                </div>
+                <div class="border-l-4 p-6 rounded-r-lg shadow-md hover:shadow-lg transition-shadow duration-300" style="border-color: #2979FF; background-color: #F0F7FF;"> 
+                    <h4 class="text-xl font-semibold mb-2" style="color: #2979FF;">Customer-Obsessed & Culture-Led (Hannah Grey)</h4>
+                    <p class="text-gray-700">Thesis-driven, using "Culture Vibrations" to identify trends. Backs founders redefining everyday experiences with a deep understanding of their customers. Human-centric approach.</p>
+                </div>
+                <div class="border-l-4 p-6 rounded-r-lg shadow-md hover:shadow-lg transition-shadow duration-300" style="border-color: #7928CA; background-color: #FAF5FF;"> 
+                    <h4 class="text-xl font-semibold mb-2" style="color: #7928CA;">Anti-Thematic & Founder-First (Founder Collective)</h4>
+                    <p class="text-gray-700">Composed of ex-founders, they are open to "weird & wonderful" ideas, prioritizing the founder over trends. Emphasizes "efficient entrepreneurship" – raising minimal capital.</p>
+                </div>
+                <div class="border-l-4 p-6 rounded-r-lg shadow-md hover:shadow-lg transition-shadow duration-300" style="border-color: #0A2540; background-color: #F8FAFC;"> 
+                    <h4 class="text-xl font-semibold mb-2" style="color: #0A2540;">B2B SaaS Specialization (Forum Ventures)</h4>
+                    <p class="text-gray-700">"For Founders by Founders" focused solely on B2B SaaS. Offers an accelerator ("fractional co-founder") and an AI Venture Studio. Values deep domain expertise and distribution advantages.</p>
+                </div>
+                <div class="border-l-4 p-6 rounded-r-lg shadow-md md:col-span-2 hover:shadow-lg transition-shadow duration-300" style="border-color: #1E293B; background-color: #F8FAFC;"> 
+                    <h4 class="text-xl font-semibold mb-2" style="color: #1E293B;">Network-Driven B2B Growth (NextGen VP)</h4>
+                    <p class="text-gray-700">Believes "Connection is the most powerful catalyst for growth." Leverages its "VP Engine" – an extensive network of 1800+ executives – for sourcing, diligence, and portfolio support in B2B startups.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="numbers" class="py-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 section-title-underline">By the Numbers: Pre-Seed Investment Snapshots</h2>
+            <p class="text-center text-lg text-gray-700 mb-12 max-w-3xl mx-auto">A look at typical investment parameters. Note that these are general guidelines and can vary per deal.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-stretch">
+                <div class="bg-white rounded-xl shadow-xl p-8">
+                    <h3 class="text-2xl font-semibold mb-6 text-center" style="color: #0A2540;">Typical Initial Check Sizes</h3>
+                    <p class="text-sm text-gray-500 text-center mb-6">Illustrative ranges for first investments at the pre-seed/seed stage.</p>
+                    <div class="chart-container h-[450px] md:h-[400px]">
+                        <canvas id="checkSizesChart"></canvas>
+                    </div>
+                     <p class="text-xs text-gray-500 mt-6 text-center">Data represents typical lower to upper bounds of initial check sizes. Bulletpitch+ minimums are per deal for syndicate members.</p>
+                </div>
+                <div class="bg-white rounded-xl shadow-xl p-8 flex flex-col justify-center">
+                    <h3 class="text-2xl font-semibold mb-8 text-center" style="color: #0A2540;">Firm Focus Distribution</h3>
+                    <p class="text-sm text-gray-500 text-center mb-6">A qualitative look at the primary strategic approaches of the panelists' firms.</p>
+                    <div class="chart-container h-[300px] md:h-[350px]">
+                        <canvas id="firmFocusChart"></canvas>
+                    </div>
+                    <p class="text-xs text-gray-500 mt-6 text-center">Illustrates the dominant investment approaches discussed.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="value" class="py-16 bg-white rounded-xl shadow-xl my-16 p-10 md:p-14">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 section-title-underline">Value Beyond Capital: The Investor Toolkit</h2>
+            <p class="text-center text-lg text-gray-700 mb-12 max-w-3xl mx-auto">Pre-seed investors offer more than just funding. They provide crucial support, networks, and expertise to help founders navigate early challenges.</p>
+            
+            <div class="space-y-12">
+                <div>
+                    <h4 class="text-2xl font-semibold mb-4 text-center" style="color: #E7007B;">The Challenge: Building from Zero to One</h4>
+                    <p class="text-center text-gray-700 max-w-xl mx-auto">Founders face immense hurdles: validating ideas, finding product-market fit, building a team, and securing initial customers with limited resources.</p>
+                </div>
+
+                <div class="text-center text-4xl font-bold" style="color: #2979FF;">&#x2193;</div> 
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="flowchart-step" style="border-color: #E7007B;">
+                        <h5 class="text-lg font-semibold mb-1" style="color: #E7007B;">Bulletpitch: Media & Visibility</h5>
+                        <p class="text-sm text-gray-700">Newsletter features, event access, community engagement, brand building through media exposure.</p>
+                    </div>
+                    <div class="flowchart-step" style="border-color: #2979FF;">
+                        <h5 class="text-lg font-semibold mb-1" style="color: #2979FF;">Hannah Grey: Strategic Insights</h5>
+                        <p class="text-sm text-gray-700">"Culture Vibrations" for market foresight, marketing expertise, syndicate building, customer understanding.</p>
+                    </div>
+                    <div class="flowchart-step" style="border-color: #7928CA;">
+                        <h5 class="text-lg font-semibold mb-1" style="color: #7928CA;">Founder Collective: Founder Empathy</h5>
+                        <p class="text-sm text-gray-700">Advice from ex-founders, focus on capital efficiency, practical operational guidance, strong founder alignment.</p>
+                    </div>
+                    <div class="flowchart-step" style="border-color: #0A2540;">
+                        <h5 class="text-lg font-semibold mb-1" style="color: #0A2540;">Forum Ventures: B2B SaaS Toolkit</h5>
+                        <p class="text-sm text-gray-700">Accelerator program ("fractional co-founder"), GTM strategy, AI Venture Studio, specialized B2B community.</p>
+                    </div>
+                    <div class="flowchart-step md:col-span-2 lg:col-span-1 lg:col-start-2" style="border-color: #1E293B;">
+                        <h5 class="text-lg font-semibold mb-1" style="color: #1E293B;">NextGen VP: Network Power</h5>
+                        <p class="text-sm text-gray-700">"VP Engine" access to 1800+ executives for strategic intros, hiring, problem-solving, and diligence.</p>
+                    </div>
+                </div>
+
+                <div class="text-center text-4xl font-bold" style="color: #2979FF;">&#x2193;</div>
+                
+                <div>
+                    <h4 class="text-2xl font-semibold mb-4 text-center" style="color: #2979FF;">The Goal: Accelerated Growth & Success</h4>
+                    <p class="text-center text-gray-700 max-w-xl mx-auto">Strategic support aims to de-risk the venture, accelerate product-market fit, build a strong foundation, and prepare for future funding rounds.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="focus" class="py-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 section-title-underline">Key Sector Interests</h2>
+            <p class="text-center text-lg text-gray-700 mb-12 max-w-3xl mx-auto">While some investors are agnostic, specific sectors often emerge as areas of deep interest and expertise.</p>
+            <div class="bg-white rounded-xl shadow-xl p-8 md:p-10">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+                    <div>
+                        <h3 class="text-2xl font-semibold mb-6" style="color: #0A2540;">Prominent Themes:</h3>
+                        <ul class="space-y-4">
+                            <li class="flex items-start">
+                                <span class="inline-block w-6 h-6 rounded-full mr-4 mt-1 flex-shrink-0" style="background-image: linear-gradient(to right, #2979FF, #7928CA);"></span>
+                                <p><strong style="color: #0A2540;">B2B SaaS:</strong> A strong focus for Forum Ventures and NextGen VP, covering various verticals including AI, e-commerce enablement, supply chain, and vertical SaaS.</p>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="inline-block w-6 h-6 rounded-full mr-4 mt-1 flex-shrink-0" style="background-color: #E7007B;"></span>
+                                <p><strong style="color: #0A2540;">Healthcare & Wellness:</strong> Interest from Hannah Grey (redefining experiences), Forum Ventures (operational efficiency, access to care), and NextGen VP (Healthtech).</p>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="inline-block w-6 h-6 rounded-full mr-4 mt-1 flex-shrink-0" style="background-color: #2979FF;"></span>
+                                <p><strong style="color: #0A2540;">Applied AI:</strong> Forum Ventures has a dedicated AI studio. Hannah Grey explores AI ethics and applications. Other firms are also investing in AI-driven solutions.</p>
+                            </li>
+                             <li class="flex items-start">
+                                <span class="inline-block w-6 h-6 rounded-full mr-4 mt-1 flex-shrink-0" style="background-color: #7928CA;"></span>
+                                <p><strong style="color: #0A2540;">FinTech:</strong> NextGen VP and Hannah Grey list FinTech as a focus. Bulletpitch has invested in areas like Junior Roth IRAs.</p>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="inline-block w-6 h-6 rounded-full mr-4 mt-1 flex-shrink-0" style="background-color: #0A2540;"></span>
+                                <p><strong style="color: #0A2540;">Founder-Driven/Agnostic:</strong> Bulletpitch and Founder Collective maintain a broader, industry-agnostic or anti-thematic approach, prioritizing the founder and idea.</p>
+                            </li>
+                        </ul>
+                        <p class="mt-8 text-sm text-gray-600">This highlights common areas of interest. Founders should always research a specific firm's current theses and portfolio for the most up-to-date alignment.</p>
+                    </div>
+                    <div class="chart-container h-[300px] md:h-[350px]">
+                         <canvas id="sectorFocusChart"></canvas>
+                         <p class="text-xs text-gray-500 mt-4 text-center">Illustrative breakdown of generalized investor interest areas based on dossier.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="wisdom" class="py-16 bg-white rounded-xl shadow-xl my-16 p-10 md:p-14">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 section-title-underline">Wisdom for Founders: Key Takeaways</h2>
+            <p class="text-center text-lg text-gray-700 mb-12 max-w-3xl mx-auto">Distilled advice from the panelists and their firms for pre-seed entrepreneurs.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="p-8 rounded-lg shadow-md" style="background-color: #FFF6FA;"> 
+                    <p class="text-lg italic text-gray-800 mb-3">"People invest in people. Your personal brand and conviction matter immensely."</p>
+                    <p class="text-md font-semibold" style="color: #E7007B;">- Inspired by Brett Perlmutter</p>
+                </div>
+                <div class="p-8 rounded-lg shadow-md" style="background-color: #F0F7FF;"> 
+                    <p class="text-lg italic text-gray-800 mb-3">"Be customer-obsessed. Deeply understand their pain and how you redefine their experience."</p>
+                    <p class="text-md font-semibold" style="color: #2979FF;">- Inspired by Kate Shillo Beardsley</p>
+                </div>
+                <div class="p-8 rounded-lg shadow-md" style="background-color: #FAF5FF;"> 
+                    <p class="text-lg italic text-gray-800 mb-3">"Practice efficient entrepreneurship. Raise what you need, preserve equity, and focus on fundamentals."</p>
+                    <p class="text-md font-semibold" style="color: #7928CA;">- Inspired by Founder Collective</p>
+                </div>
+                <div class="p-8 rounded-lg shadow-md" style="background-color: #E2E8F0;"> 
+                    <p class="text-lg italic text-gray-800 mb-3">"For B2B SaaS, deep domain expertise and a clear distribution advantage can significantly de-risk your venture."</p>
+                    <p class="text-md font-semibold" style="color: #0A2540;">- Inspired by Naomi Goez</p>
+                </div>
+                <div class="p-8 rounded-lg shadow-md md:col-span-2" style="background-color: #F8FAFC;"> 
+                    <p class="text-lg italic text-gray-800 mb-3">"Leverage connections. The right network can unlock critical opportunities for growth, talent, and strategy."</p>
+                    <p class="text-md font-semibold" style="color: #1E293B;">- Inspired by NextGen Venture Partners</p>
+                </div>
+            </div>
+            <div class="text-center mt-12">
+                <button id="summarizeAdviceButton" class="gemini-button">
+                    ✨ Get AI Summary of Founder Advice
+                </button>
+                <div id="adviceSummaryLoading" class="loading-spinner hidden"></div>
+                <div id="adviceSummaryResult" class="ai-results hidden text-left"></div>
+                <p id="adviceSummaryError" class="text-red-500 text-sm mt-2 hidden"></p>
+            </div>
+        </section>
+
+        <section id="ai-questions" class="py-16 bg-white rounded-xl shadow-xl my-16 p-10 md:p-14">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 section-title-underline" style="border-image: linear-gradient(to right, #2979FF, #7928CA) 1;">✨ AI-Powered Question Generator</h2> 
+            <p class="text-center text-lg text-gray-700 mb-10 max-w-3xl mx-auto">Need some inspiration for your panel discussion? Let AI help you craft engaging questions for the pre-seed investors based on their collective expertise and the themes of this dossier.</p>
+            <div class="text-center">
+                <button id="generateQuestionsButton" class="gemini-button">
+                    ✨ Generate Panel Questions
+                </button>
+                <div id="questionsLoading" class="loading-spinner hidden"></div>
+                <div id="questionsResult" class="ai-results hidden text-left"></div>
+                <p id="questionsError" class="text-red-500 text-sm mt-2 hidden"></p>
+            </div>
+        </section>
+        
+    </main>
+
+    <footer style="background-color: #0A2540;" class="text-white py-16"> 
+        <div class="container mx-auto px-6 text-center">
+            <p class="text-3xl font-semibold mb-4" style="color: #FFFFFF;">Ready to Dive Deeper?</p>
+            <p class="mb-8 text-lg" style="color: #F0F7FF;">This infographic provides a snapshot. The upcoming webinar offers a chance to hear directly from these investors, ask your questions, and gain even richer insights into the pre-seed fundraising world.</p>
+            <p class="text-sm" style="color: #E2E8F0;">&copy; 2025 Companyon Ventures Pre-Seed Market Outlook. Infographic for informational purposes.</p>
+        </div>
+    </footer>
+
+    <script>
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinks = document.querySelectorAll('#navbar a[href^="#"]');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        navLinks.forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                if (this.getAttribute('href') !== '#') { 
+                    e.preventDefault();
+                    mobileMenu.classList.add('hidden'); 
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+
+                    if (targetElement) {
+                         const offsetTop = targetElement.offsetTop - 80; 
+                         window.scrollTo({
+                            top: offsetTop,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+        
+        function processLabel(label, maxLength = 16) {
+            if (typeof label !== 'string') { 
+                label = String(label);
+            }
+            if (label.length > maxLength) {
+                const words = label.split(' ');
+                const lines = [];
+                let currentLine = '';
+                for (const word of words) {
+                    if ((currentLine + word).length > maxLength && currentLine.length > 0) {
+                        lines.push(currentLine.trim());
+                        currentLine = word + ' ';
+                    } else {
+                        currentLine += word + ' ';
+                    }
+                }
+                lines.push(currentLine.trim());
+                return lines;
+            }
+            return label;
+        }
+
+        const tooltipTitleCallback = function(tooltipItems) {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) {
+              return label.join(' ');
+            } else {
+              return String(label); 
+            }
+        };
+        
+        const companyonChartColors = {
+            darkBlue: '#0A2540',
+            brightBlue: '#2979FF',
+            purple: '#7928CA',
+            magenta: '#E7007B',
+            lightBlue: '#ADD8E6', 
+            mediumGray: '#A0AEC0',
+            white: '#FFFFFF'
+        };
+
+        const commonChartOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'top',
+                    labels: {
+                        font: { size: 12, weight: '500' }, 
+                        color: companyonChartColors.darkBlue 
+                    }
+                },
+                tooltip: {
+                    callbacks: {
+                        title: tooltipTitleCallback
+                    },
+                    backgroundColor: companyonChartColors.darkBlue,
+                    titleColor: companyonChartColors.lightBlue, 
+                    bodyColor: companyonChartColors.white, 
+                    titleFont: { size: 14, weight: 'bold'},
+                    bodyFont: { size: 12 },
+                    padding: 12, 
+                    cornerRadius: 6 
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: { 
+                        color: companyonChartColors.darkBlue,
+                        font: { size: 11 } 
+                    },
+                    grid: { color: '#E2E8F0' } 
+                },
+                x: {
+                    ticks: { 
+                        color: companyonChartColors.darkBlue,
+                        font: { size: 11 },
+                        callback: function(value, index, values) {
+                            const label = this.getLabelForValue(value);
+                            return processLabel(label, 10); 
+                        }
+                    },
+                    grid: { display: false }
+                }
+            }
+        };
+        
+        const checkSizesCtx = document.getElementById('checkSizesChart').getContext('2d');
+        new Chart(checkSizesCtx, {
+            type: 'bar',
+            data: {
+                labels: [
+                    processLabel('Bulletpitch+ (Syndicate Min.)'), 
+                    processLabel('Hannah Grey'), 
+                    processLabel('Founder Collective'), 
+                    processLabel('Forum Ventures'), 
+                    processLabel('NextGen VP (Seed)')
+                ],
+                datasets: [{
+                    label: 'Min Check Size ($)',
+                    data: [5000, 350000, 400000, 50000, 500000],
+                    backgroundColor: companyonChartColors.brightBlue,
+                    borderColor: companyonChartColors.darkBlue,
+                    borderWidth: 1,
+                    barPercentage: 0.6,
+                    categoryPercentage: 0.7
+                },
+                {
+                    label: 'Max Check Size ($)',
+                    data: [200000, 1000000, 1500000, 750000, 2000000],
+                    backgroundColor: companyonChartColors.purple,
+                    borderColor: companyonChartColors.darkBlue,
+                    borderWidth: 1,
+                    barPercentage: 0.6,
+                    categoryPercentage: 0.7
+                }]
+            },
+            options: {
+                ...commonChartOptions,
+                indexAxis: 'y',
+                scales: {
+                    x: {
+                         ...commonChartOptions.scales.x,
+                        ticks: {
+                            ...commonChartOptions.scales.x.ticks,
+                            callback: function(value) { return '$' + value.toLocaleString(); }
+                        }
+                    },
+                    y: {
+                        ...commonChartOptions.scales.y,
+                         ticks: {
+                            ...commonChartOptions.scales.y.ticks,
+                            font: { size: 10 } 
+                        }
+                    }
+                },
+                plugins: {
+                    ...commonChartOptions.plugins,
+                    tooltip: {
+                        ...commonChartOptions.plugins.tooltip,
+                        callbacks: {
+                            ...commonChartOptions.plugins.tooltip.callbacks,
+                            label: function(context) {
+                                let label = context.dataset.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                if (context.parsed.x !== null) {
+                                    label += '$' + context.parsed.x.toLocaleString();
+                                }
+                                return label;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        const firmFocusCtx = document.getElementById('firmFocusChart').getContext('2d');
+        new Chart(firmFocusCtx, {
+            type: 'doughnut',
+            data: {
+                labels: [
+                    processLabel('Media-Driven'), 
+                    processLabel('Thesis/Culture-Led'), 
+                    processLabel('Anti-Thematic'), 
+                    processLabel('B2B SaaS Specialization'), 
+                    processLabel('Network-Driven B2B')
+                ],
+                datasets: [{
+                    label: 'Firm Focus Approach',
+                    data: [20, 20, 20, 20, 20], 
+                    backgroundColor: [
+                        companyonChartColors.magenta, 
+                        companyonChartColors.brightBlue, 
+                        companyonChartColors.purple, 
+                        companyonChartColors.darkBlue, 
+                        companyonChartColors.lightBlue
+                    ],
+                    borderColor: companyonChartColors.white, 
+                    borderWidth: 2,
+                    hoverOffset: 8 
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { 
+                        position: 'bottom',
+                        labels: { 
+                            font: {size: 11 }, 
+                            color: companyonChartColors.darkBlue,
+                            padding: 15 
+                        }
+                    },
+                     tooltip: {
+                        ...commonChartOptions.plugins.tooltip, 
+                        callbacks: {
+                            title: tooltipTitleCallback,
+                            label: function(context) {
+                                let label = context.label || '';
+                                if (Array.isArray(label)) {
+                                    label = label.join(' ');
+                                }
+                                if (label) {
+                                    label += ': ';
+                                }
+                                label += context.parsed + '% (Illustrative)';
+                                return label;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        const sectorFocusCtx = document.getElementById('sectorFocusChart').getContext('2d');
+        new Chart(sectorFocusCtx, {
+            type: 'pie',
+            data: {
+                labels: [
+                    processLabel('B2B SaaS'), 
+                    processLabel('Healthcare/Wellness'), 
+                    processLabel('Applied AI'), 
+                    processLabel('FinTech'), 
+                    processLabel('Agnostic/Founder-Driven')
+                ],
+                datasets: [{
+                    label: 'Sector Interest',
+                    data: [30, 20, 20, 15, 15], 
+                    backgroundColor: [
+                        companyonChartColors.brightBlue, 
+                        companyonChartColors.magenta, 
+                        companyonChartColors.purple, 
+                        companyonChartColors.lightBlue,
+                        companyonChartColors.darkBlue
+                    ],
+                    borderColor: companyonChartColors.white,
+                    borderWidth: 2,
+                    hoverOffset: 8
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                 plugins: {
+                    legend: { 
+                        position: 'right',
+                        labels: { 
+                            font: {size: 11 }, 
+                            color: companyonChartColors.darkBlue, 
+                            boxWidth:18, 
+                            padding: 15
+                        }
+                    },
+                    tooltip: {
+                        ...commonChartOptions.plugins.tooltip,
+                        callbacks: {
+                           title: tooltipTitleCallback,
+                           label: function(context) {
+                                let label = context.label || '';
+                                if (Array.isArray(label)) {
+                                    label = label.join(' ');
+                                }
+                                if (label) {
+                                    label += ': ';
+                                }
+                                label += context.parsed + '% (Illustrative)';
+                                return label;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        const summarizeAdviceButton = document.getElementById('summarizeAdviceButton');
+        const adviceSummaryLoading = document.getElementById('adviceSummaryLoading');
+        const adviceSummaryResult = document.getElementById('adviceSummaryResult');
+        const adviceSummaryError = document.getElementById('adviceSummaryError');
+
+        const generateQuestionsButton = document.getElementById('generateQuestionsButton');
+        const questionsLoading = document.getElementById('questionsLoading');
+        const questionsResult = document.getElementById('questionsResult');
+        const questionsError = document.getElementById('questionsError');
+
+        const investorProfilesForPrompt = `
+            - Brett Perlmutter (Bulletpitch): Industry Agnostic, Media-Driven Deals. Venture-media company.
+            - Kate Shillo Beardsley (Hannah Grey): Consumer, SaaS, Health, FinTech. Customer-obsessed, "Culture Vibrations" thesis.
+            - Brent Willess (Founder Collective): Anti-Thematic, Efficient Entrepreneurship. Founder-first, ex-Uber.
+            - Naomi Goez (Forum Ventures): B2B SaaS, Applied AI, Healthcare. First check B2B SaaS, accelerator, AI studio.
+            - Riley Finch (NextGen Venture Partners): B2B (SaaS, Health, FinTech, Data, Robotics). Network-driven via "VP Engine".
+        `;
+        
+        const additionalQuestionsContext = `
+            Moderator Guidelines & Introduction:
+            - Intros: We’ll start by having each of you introduce yourself, your firm (stage, focus, criteria), and something about your firm that might not be obvious from your website. Please keep it to your elevator intro (30 seconds or less). I’ll prompt each of you, but we’ll be going alphabetical by first name (Brent- you’re leading off!)
+            - Be concise: Because of the limited time and size of the panel, try to keep thoughts, anecdotes, and responses concise. Pauses will allow other panels to jump into the conversations. I will prompt to tee up new topics or to dive into an existing topic.
+            - Be conversational: We want the flow to feel conversational, so feel free to prompt a fellow panelist, follow up on someone’s point, and add your perspective on a topic.
+            - Be contrarian: We’re looking to capture the diversity in investing approaches, criteria, and fundraising advice, so please jump in when you can contrast your approach or views to those of your fellow panelists.
+            - Feel free to DM me in Zoom if you want to chime in, redirect topics, etc.
+
+            Founder Outreach & Prospecting (getting the first meeting):
+            - When reflecting on your recent investments, how did those founders initially get your attention? What about their first email, conversation, or touch point got you hooked? How might that translate to advice for founders raising capital?
+            - What are the red and green flags before and during your first conversation with a founder?
+            - Where can founders stand out besides your inbox?
+
+            Landing the investment:
+            - Many founders get their fundraising advice on social media, or model their fundraising based on the success of one or two outlier decacorns. Talk about some general fundraising misconceptions you often see, and what's a more realistic approach for the average pre-seed founder?
+            - When you have follow-up meetings and start diligence with a founder, what do you look for, and what advice would you give a founder to maximize their chances of success with your firm.
+            - What behaviors have killed a deal you were initially excited about?
+            - What’s the most memorable pitch you received and why?
+
+            General Themes:
+            - We’re seeing a lot of AI-native startups, not only in the products startups are building, but how they’re building their product, go-to-market, and every corner of their operations. Talk about how AI plays into your thesis and the bets you’re making.
+        `;
+
+
+        const callGeminiAPI = async (prompt, loadingElement, resultElement, errorElement) => {
+            loadingElement.classList.remove('hidden');
+            resultElement.classList.add('hidden');
+            errorElement.classList.add('hidden');
+            resultElement.textContent = '';
+            errorElement.textContent = '';
+
+            try {
+                let chatHistory = [{ role: "user", parts: [{ text: prompt }] }];
+                const payload = { contents: chatHistory };
+                const apiKey = ""; 
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+                
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    console.error('API Error Data:', errorData);
+                    throw new Error(`API request failed with status ${response.status}: ${errorData.error?.message || response.statusText}`);
+                }
+
+                const result = await response.json();
+
+                if (result.candidates && result.candidates.length > 0 &&
+                    result.candidates[0].content && result.candidates[0].content.parts &&
+                    result.candidates[0].content.parts.length > 0) {
+                    const text = result.candidates[0].content.parts[0].text;
+                    resultElement.textContent = text;
+                    resultElement.classList.remove('hidden');
+                } else {
+                    console.error('Unexpected API response structure:', result);
+                    throw new Error('Failed to get a valid response from the AI.');
+                }
+
+            } catch (error) {
+                console.error('Error calling Gemini API:', error);
+                errorElement.textContent = `Error: ${error.message}. Please check the console for more details. If the issue persists, the API might be temporarily unavailable or there could be a configuration problem.`;
+                errorElement.classList.remove('hidden');
+            } finally {
+                loadingElement.classList.add('hidden');
+            }
+        };
+
+        summarizeAdviceButton.addEventListener('click', () => {
+            const adviceElements = document.querySelectorAll('#wisdom .grid > div p:first-child');
+            let adviceText = "Here is some advice for founders from pre-seed investors:\n";
+            adviceElements.forEach(el => {
+                adviceText += `- ${el.textContent.trim()}\n`;
+            });
+            const prompt = `You are an AI assistant for startup founders. Based on the following advice snippets from pre-seed investors, provide a concise, encouraging, and actionable summary (around 100-150 words) for founders who are about to attend a webinar with these investors. Highlight 2-3 key themes.
+
+${adviceText}
+
+Summary:`;
+            callGeminiAPI(prompt, adviceSummaryLoading, adviceSummaryResult, adviceSummaryError);
+        });
+
+        generateQuestionsButton.addEventListener('click', () => {
+            const prompt = `You are an AI assistant helping a moderator prepare for a webinar panel with five pre-seed investors. The panel aims to educate pre-seed founders.
+Here's a brief overview of the investors and their firms:
+${investorProfilesForPrompt}
+
+Key themes of the infographic (and likely the webinar) include: investor philosophies, typical check sizes, value-add beyond capital, key sector interests, and general advice for founders.
+
+In addition to general questions, please incorporate questions based on the following specific topics and guidelines provided by the moderator:
+${additionalQuestionsContext}
+
+Please generate a comprehensive list of 8-10 stimulating and insightful questions. Ensure some questions are suitable for the entire panel, and others could be targeted to individual panelists based on their known focus (though you don't need to specify who to target for each). The questions should be open-ended, encourage diverse perspectives, and be highly relevant to pre-seed founders. Ensure questions are distinct and cover different facets of the pre-seed journey, including the new topics provided.
+Format the output as a numbered list, clearly delineating between general panel questions and those inspired by the new categories (Founder Outreach, Landing Investment, General Themes like AI).
+Example of a good question: "Considering the current market, what's one non-obvious metric pre-seed founders should be tracking that you find particularly telling?"
+Avoid overly generic questions. Aim for questions that spark discussion and reveal nuanced viewpoints.`;
+            callGeminiAPI(prompt, questionsLoading, questionsResult, questionsError);
+        });
+
+    </script>
+</body>
+</html>
